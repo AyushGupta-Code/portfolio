@@ -42,9 +42,9 @@ const home: Home = {
   path: "/",
   image: "/images/og/home.jpg",
   label: "Home",
-  title: `${person.name} — Associate AI Engineer`,
-  description: `Portfolio of ${person.name}, an Associate AI Engineer specialising in multimodal GenAI, RAG, and LLM-powered systems.`,
-  headline: <>Building systems that retrieve, reason, and generate</>,
+  title: `${person.name} — AI Engineer`,
+  description: `Portfolio of ${person.name}, an AI Engineer specialising in multimodal GenAI, RAG, and LLM-powered systems.`,
+  headline: <>I build things that retrieve, reason, and generate</>,
   featured: {
     display: false,
     title: <>Featured project</>,
@@ -52,8 +52,8 @@ const home: Home = {
   },
   subline: (
     <>
-      I'm Ayush — an AI Engineer and M.S. CS candidate at NC State, building multimodal GenAI,
-      RAG pipelines, and LLM-powered applications. Ask me anything below.
+      I'm Ayush — finishing my M.S. at NC State while working on retrieval systems, agentic
+      workflows, and multimodal AI. Ask me anything below.
     </>
   ),
 };
@@ -79,12 +79,12 @@ const about: About = {
     title: "Introduction",
     description: (
       <>
-        I'm an AI Engineer currently pursuing an M.S. in Computer Science at North Carolina State
-        University (May 2026, GPA 3.5). Over the past year in industry I've designed and shipped
-        retrieval pipelines, agentic workflows, and multimodal audio-visual systems — building at
-        the intersection of grounded generation, RAG, and production-scale LLM infrastructure. I'm
-        drawn to problems where language models need to reason reliably over real-world knowledge,
-        and to systems where that reasoning has to hold up at scale.
+        I'm an AI Engineer based in Raleigh, NC, finishing my M.S. in Computer Science at NC State
+        (May 2026). Before grad school I spent a year at Innoventix Solutions building retrieval
+        pipelines and multimodal generation systems in production — the kind of work where "it
+        works in the notebook" is nowhere near the finish line. These days I'm most interested in
+        making language models reliable: grounded retrieval, robust generation, and the plumbing
+        that connects them. I like problems that are messy in the interesting ways.
       </>
     ),
   },
@@ -98,27 +98,17 @@ const about: About = {
         role: "Software Engineer (AI/ML)",
         achievements: [
           <>
-            Built a scalable Python ingestion pipeline using Selenium and BeautifulSoup to extract
-            and normalise unstructured product metadata from diverse web sources, creating cleaner
-            inputs for downstream retrieval and multimodal AI workflows.
+            My main project was a multimodal ad-generation system — I built the whole data layer,
+            starting with a Python scraping pipeline (Selenium + BeautifulSoup) to pull product
+            metadata from client catalogs, then chunking, embedding, and indexing it for
+            context-aware retrieval. That retrieval layer fed into an LLM workflow that generated
+            product-aware scripts and scene plans for short-form marketing video.
           </>,
           <>
-            Implemented semantic chunking, PyTorch embedding generation, and vector indexing to
-            support context-aware product retrieval across client catalogs, improving extraction
-            quality for ad-generation tasks.
-          </>,
-          <>
-            Integrated retrieval-grounded LLM workflows into a multimodal ad-generation pipeline,
-            enabling product-aware script generation and scene planning for short-form marketing
-            creatives.
-          </>,
-          <>
-            Contributed TTS narration and FFmpeg-based rendering pipelines to produce complete
-            audio-visual ads, improving synchronisation and reducing rendering overhead.
-          </>,
-          <>
-            Supported deployment automation for multimodal AI services using Docker, GitHub
-            Actions, Terraform, and AWS/GCP tooling.
+            On the output side I wired up TTS narration and FFmpeg rendering to produce finished
+            audio-visual ads end-to-end. When I wasn't building features I was keeping the stack
+            running — containerising services with Docker, automating deploys via GitHub Actions
+            and Terraform, and managing infra across AWS and GCP.
           </>,
         ],
         images: [],

@@ -1,10 +1,8 @@
 import {
   Heading,
   Text,
-  Button,
   RevealFx,
   Column,
-  Row,
   Schema,
   Meta,
 } from "@once-ui-system/core";
@@ -44,29 +42,14 @@ export default function Home() {
               {home.headline}
             </Heading>
           </RevealFx>
-          <RevealFx translateY="8" delay={0.2} fillWidth horizontal="center" paddingBottom="32">
+          <RevealFx translateY="8" delay={0.2} fillWidth horizontal="center" paddingBottom="16">
             <Text wrap="balance" onBackground="neutral-weak" variant="heading-default-xl">
               {home.subline}
             </Text>
           </RevealFx>
-          <RevealFx paddingTop="12" delay={0.4} horizontal="center">
-            <Button
-              id="about"
-              data-border="rounded"
-              href={about.path}
-              variant="secondary"
-              size="m"
-              weight="default"
-              arrowIcon
-            >
-              <Row gap="8" vertical="center" paddingX="4">
-                About me
-              </Row>
-            </Button>
-          </RevealFx>
         </Column>
       </Column>
-      <RevealFx translateY="16" delay={0.6} fillWidth>
+      <RevealFx translateY="16" delay={0.4} fillWidth>
         <ChatSection />
       </RevealFx>
     </Column>
