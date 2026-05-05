@@ -1,0 +1,69 @@
+---
+title: "Grounded Local RAG and AgentOps Platform"
+publishedAt: "2024-11-01"
+summary: "A local-first retrieval-augmented generation platform with hybrid search, cross-encoder reranking, citation-grounded generation, and an MCP-compatible agentic tool layer — built for private knowledge retrieval without cloud API dependencies."
+images: []
+team:
+  - name: "Ayush Gupta"
+    role: "AI Engineer"
+    avatar: "/images/avatar.jpg"
+    linkedIn: "https://www.linkedin.com/in/ayush-gupta-50007b1b6/"
+link: "https://github.com/AyushGupta-Code/local-agentops"
+---
+
+## Overview
+
+Most RAG implementations make a quiet trade-off: they send your documents to a cloud embedding API and your queries to a hosted LLM. For enterprise and research use cases where data privacy matters, that trade-off is often unacceptable.
+
+This platform is a fully local-first alternative. Every component — ingestion, embedding, retrieval, reranking, and generation — runs on-device. The result is a citation-backed question-answering system that never sends data outside the machine, with built-in evaluation hooks so you can measure retrieval quality without guessing.
+
+## Architecture
+
+The pipeline is modular and composed of six stages:
+
+### 1 — Ingestion
+
+Documents (PDF, plain text, Markdown) are parsed and normalised into a canonical schema. Metadata — source file, page number, section header — is preserved through the pipeline so that citations in the final answer are specific and verifiable.
+
+### 2 — Chunking
+
+Chunks are produced using a semantic chunking strategy that respects paragraph and section boundaries rather than splitting on a fixed token count. This meaningfully reduces the number of chunks that are semantically incomplete, which improves both retrieval recall and answer coherence.
+
+### 3 — Hybrid Indexing
+
+Each chunk is indexed twice: once via a dense vector embedding (for semantic similarity search) and once into a BM25 lexical index (for keyword precision). Hybrid retrieval consistently outperforms either approach alone, particularly for queries that contain domain-specific terminology or named entities that dense models struggle to handle.
+
+### 4 — Reranking
+
+The top candidates from hybrid retrieval are passed to a cross-encoder reranker, which scores each (query, chunk) pair jointly rather than independently. This re-orders the candidate set by relevance before it reaches the LLM, reducing the noise that the generator has to reason over.
+
+### 5 — Grounded Generation
+
+A local LLM receives the reranked context and is prompted with an explicit citation requirement: every factual claim in the response must be anchored to a specific retrieved chunk. Answers that cannot be grounded are suppressed rather than hallucinated. The system prompt is tuned to refuse speculation outside the retrieved context.
+
+### 6 — MCP Tool Layer
+
+The platform exposes its retrieval and generation capabilities through a Model Context Protocol-compatible interface, making it composable into larger agentic workflows. An external agent can call the platform as a tool — submitting a query and receiving a grounded answer — without needing to manage the retrieval pipeline itself.
+
+## Key Technical Decisions
+
+**Local LLMs over cloud APIs** — Privacy is a hard constraint for many document types. Running inference locally with quantised models (via `llama.cpp` or Ollama) keeps latency acceptable while eliminating the data-egress risk.
+
+**Hybrid over pure vector search** — Vector search alone degrades on queries with rare terms or precise identifiers. Combining BM25 with semantic search gives better recall across a wider query distribution. The retrieval fusion step uses Reciprocal Rank Fusion (RRF) to merge the two ranked lists.
+
+**Cross-encoder reranking as a second stage** — Bi-encoder models (used for initial retrieval) trade accuracy for speed. A cross-encoder running only on the top-k candidates adds a high-accuracy relevance signal without the cost of scoring the full corpus.
+
+**Citation-first prompting** — Grounded answers are the primary safety mechanism. A generation that cannot cite its sources is treated as a retrieval failure and surfaced to the user as such, rather than being presented as a confident answer.
+
+## Evaluation
+
+Built-in evaluation support covers both retrieval and generation:
+
+- **Retrieval**: hit rate and MRR at k=5 and k=10, measured against a held-out query–document relevance set
+- **Generation**: faithfulness (does the answer contradict the retrieved context?) and answer relevance, scored with a lightweight local judge model
+
+Running evaluation against a known dataset before and after tuning chunk size, retrieval weight ratios, or reranker choice makes optimisation principled rather than intuition-driven.
+
+## Outcome
+
+The platform produces citation-backed answers with full retrieval transparency — the user can inspect which chunks were retrieved, their reranking scores, and exactly which chunks each sentence in the answer draws from. This makes it suitable for use cases where answer provenance matters: legal document review, research literature Q&A, and internal knowledge management.

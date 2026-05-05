@@ -1,49 +1,33 @@
 import { About, Blog, Gallery, Home, Newsletter, Person, Social, Work } from "@/types";
-import { Line, Row, Text } from "@once-ui-system/core";
 
 const person: Person = {
-  firstName: "Selene",
-  lastName: "Yu",
-  name: `Selene Yu`,
-  role: "Design Engineer",
+  firstName: "Ayush",
+  lastName: "Gupta",
+  name: `Ayush Gupta`,
+  role: "AI Engineer",
   avatar: "/images/avatar.jpg",
-  email: "example@gmail.com",
-  location: "Asia/Jakarta", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
-  languages: ["English", "Bahasa"], // optional: Leave the array empty if you don't want to display languages
+  email: "ayushgupta20011@gmail.com",
+  location: "America/New_York",
+  languages: ["English"],
 };
 
 const newsletter: Newsletter = {
-  display: true,
-  title: <>Subscribe to {person.firstName}'s Newsletter</>,
-  description: <>My weekly newsletter about creativity and engineering</>,
+  display: false,
+  title: <>Stay in the loop</>,
+  description: <>Occasional notes on generative AI, retrieval systems, and building in public.</>,
 };
 
 const social: Social = [
-  // Links are automatically displayed.
-  // Import new icons in /once-ui/icons.ts
-  // Set essentials: true for links you want to show on the about page
   {
     name: "GitHub",
     icon: "github",
-    link: "https://github.com/once-ui-system",
+    link: "https://github.com/AyushGupta-Code",
     essential: true,
   },
   {
     name: "LinkedIn",
     icon: "linkedin",
-    link: "https://www.linkedin.com/company/once-ui/",
-    essential: true,
-  },
-  {
-    name: "Instagram",
-    icon: "instagram",
-    link: "https://www.instagram.com/once_ui/",
-    essential: false,
-  },
-  {
-    name: "Threads",
-    icon: "threads",
-    link: "https://www.threads.com/@once_ui",
+    link: "https://www.linkedin.com/in/ayush-gupta-50007b1b6/",
     essential: true,
   },
   {
@@ -58,43 +42,36 @@ const home: Home = {
   path: "/",
   image: "/images/og/home.jpg",
   label: "Home",
-  title: `${person.name}'s Portfolio`,
-  description: `Portfolio website showcasing my work as a ${person.role}`,
-  headline: <>Building bridges between design and code</>,
+  title: `${person.name} — Associate AI Engineer`,
+  description: `Portfolio of ${person.name}, an Associate AI Engineer specialising in multimodal GenAI, RAG, and LLM-powered systems.`,
+  headline: <>Building systems that retrieve, reason, and generate</>,
   featured: {
-    display: true,
-    title: (
-      <Row gap="12" vertical="center">
-        <strong className="ml-4">Once UI</strong>{" "}
-        <Line background="brand-alpha-strong" vert height="20" />
-        <Text marginRight="4" onBackground="brand-medium">
-          Featured work
-        </Text>
-      </Row>
-    ),
-    href: "/work/building-once-ui-a-customizable-design-system",
+    display: false,
+    title: <>Featured project</>,
+    href: "/work",
   },
   subline: (
     <>
-    I'm Selene, a design engineer at <Text as="span" size="xl" weight="strong">ONCE UI</Text>, where I craft intuitive <br /> user experiences. After hours, I build my own projects.
-</>
+      I'm Ayush — an AI Engineer and M.S. CS candidate at NC State, building multimodal GenAI,
+      RAG pipelines, and LLM-powered applications. Ask me anything below.
+    </>
   ),
 };
 
 const about: About = {
   path: "/about",
   label: "About",
-  title: `About – ${person.name}`,
-  description: `Meet ${person.name}, ${person.role} from ${person.location}`,
+  title: `About — ${person.name}`,
+  description: `Meet ${person.name}, an ${person.role} and M.S. CS candidate at NC State`,
   tableOfContent: {
     display: true,
     subItems: false,
   },
   avatar: {
-    display: true,
+    display: false,
   },
   calendar: {
-    display: true,
+    display: false,
     link: "https://cal.com",
   },
   intro: {
@@ -102,52 +79,46 @@ const about: About = {
     title: "Introduction",
     description: (
       <>
-        Selene is a Jakarta-based design engineer with a passion for transforming complex challenges
-        into simple, elegant design solutions. Her work spans digital interfaces, interactive
-        experiences, and the convergence of design and technology.
+        I'm an AI Engineer currently pursuing an M.S. in Computer Science at North Carolina State
+        University (May 2026, GPA 3.5). Over the past year in industry I've designed and shipped
+        retrieval pipelines, agentic workflows, and multimodal audio-visual systems — building at
+        the intersection of grounded generation, RAG, and production-scale LLM infrastructure. I'm
+        drawn to problems where language models need to reason reliably over real-world knowledge,
+        and to systems where that reasoning has to hold up at scale.
       </>
     ),
   },
   work: {
-    display: true, // set to false to hide this section
+    display: true,
     title: "Work Experience",
     experiences: [
       {
-        company: "FLY",
-        timeframe: "2022 - Present",
-        role: "Senior Design Engineer",
+        company: "Innoventix Solutions",
+        timeframe: "June 2023 – July 2024",
+        role: "Software Engineer (AI/ML)",
         achievements: [
           <>
-            Redesigned the UI/UX for the FLY platform, resulting in a 20% increase in user
-            engagement and 30% faster load times.
+            Built a scalable Python ingestion pipeline using Selenium and BeautifulSoup to extract
+            and normalise unstructured product metadata from diverse web sources, creating cleaner
+            inputs for downstream retrieval and multimodal AI workflows.
           </>,
           <>
-            Spearheaded the integration of AI tools into design workflows, enabling designers to
-            iterate 50% faster.
-          </>,
-        ],
-        images: [
-          // optional: leave the array empty if you don't want to display images
-          {
-            src: "/images/projects/project-01/cover-01.jpg",
-            alt: "Once UI Project",
-            width: 16,
-            height: 9,
-          },
-        ],
-      },
-      {
-        company: "Creativ3",
-        timeframe: "2018 - 2022",
-        role: "Lead Designer",
-        achievements: [
-          <>
-            Developed a design system that unified the brand across multiple platforms, improving
-            design consistency by 40%.
+            Implemented semantic chunking, PyTorch embedding generation, and vector indexing to
+            support context-aware product retrieval across client catalogs, improving extraction
+            quality for ad-generation tasks.
           </>,
           <>
-            Led a cross-functional team to launch a new product line, contributing to a 15% increase
-            in overall company revenue.
+            Integrated retrieval-grounded LLM workflows into a multimodal ad-generation pipeline,
+            enabling product-aware script generation and scene planning for short-form marketing
+            creatives.
+          </>,
+          <>
+            Contributed TTS narration and FFmpeg-based rendering pipelines to produce complete
+            audio-visual ads, improving synchronisation and reducing rendering overhead.
+          </>,
+          <>
+            Supported deployment automation for multimodal AI services using Docker, GitHub
+            Actions, Terraform, and AWS/GCP tooling.
           </>,
         ],
         images: [],
@@ -155,78 +126,87 @@ const about: About = {
     ],
   },
   studies: {
-    display: true, // set to false to hide this section
-    title: "Studies",
+    display: true,
+    title: "Education",
     institutions: [
       {
-        name: "University of Jakarta",
-        description: <>Studied software engineering.</>,
+        name: "North Carolina State University",
+        description: (
+          <>
+            Masters in Computer Science · Aug 2024 – May 2026 · GPA 3.5/4.
+            Coursework: Algorithms, Software Engineering, Automated Learning & Data Analysis,
+            Neural Networks, NLP, Deep Learning Beyond Accuracy, Building Game AI.
+          </>
+        ),
       },
       {
-        name: "Build the Future",
-        description: <>Studied online marketing and personal branding.</>,
+        name: "SRM Institute of Science and Technology",
+        description: (
+          <>
+            B.Tech in Computer Science Engineering · Aug 2019 – May 2023 · GPA 4/4.
+          </>
+        ),
       },
     ],
   },
   technical: {
-    display: true, // set to false to hide this section
-    title: "Technical skills",
+    display: true,
+    title: "Technical Skills",
     skills: [
       {
-        title: "Figma",
+        title: "AI/ML & LLM Engineering",
         description: (
-          <>Able to prototype in Figma with Once UI with unnatural speed.</>
+          <>
+            End-to-end LLM application development: RAG pipelines, agentic workflows, multimodal
+            generation, prompt engineering, and model fine-tuning with LoRA/PEFT.
+          </>
         ),
         tags: [
-          {
-            name: "Figma",
-            icon: "figma",
-          },
+          { name: "PyTorch" },
+          { name: "HuggingFace Transformers" },
+          { name: "RAG" },
+          { name: "LangChain" },
+          { name: "LlamaIndex" },
+          { name: "scikit-learn" },
         ],
-        // optional: leave the array empty if you don't want to display images
-        images: [
-          {
-            src: "/images/projects/project-01/cover-02.jpg",
-            alt: "Project image",
-            width: 16,
-            height: 9,
-          },
-          {
-            src: "/images/projects/project-01/cover-03.jpg",
-            alt: "Project image",
-            width: 16,
-            height: 9,
-          },
-        ],
+        images: [],
       },
       {
-        title: "Next.js",
+        title: "APIs, Databases & Retrieval",
         description: (
-          <>Building next gen apps with Next.js + Once UI + Supabase.</>
+          <>
+            Building and serving AI services with FastAPI and Flask; vector + lexical hybrid search
+            with pgvector, TimescaleDB, and PostgreSQL.
+          </>
         ),
         tags: [
-          {
-            name: "JavaScript",
-            icon: "javascript",
-          },
-          {
-            name: "Next.js",
-            icon: "nextjs",
-          },
-          {
-            name: "Supabase",
-            icon: "supabase",
-          },
+          { name: "FastAPI" },
+          { name: "Flask" },
+          { name: "pgvector" },
+          { name: "PostgreSQL" },
+          { name: "MySQL" },
+          { name: "REST APIs" },
         ],
-        // optional: leave the array empty if you don't want to display images
-        images: [
-          {
-            src: "/images/projects/project-01/cover-04.jpg",
-            alt: "Project image",
-            width: 16,
-            height: 9,
-          },
+        images: [],
+      },
+      {
+        title: "Cloud, MLOps & DevOps",
+        description: (
+          <>
+            Containerised deployment and CI/CD automation across AWS and GCP with Kubernetes
+            orchestration and infrastructure-as-code.
+          </>
+        ),
+        tags: [
+          { name: "Docker" },
+          { name: "Kubernetes" },
+          { name: "Terraform" },
+          { name: "AWS" },
+          { name: "GCP" },
+          { name: "GitHub Actions" },
+          { name: "Next.js", icon: "nextjs" },
         ],
+        images: [],
       },
     ],
   },
@@ -235,70 +215,88 @@ const about: About = {
 const blog: Blog = {
   path: "/blog",
   label: "Blog",
-  title: "Writing about design and tech...",
-  description: `Read what ${person.name} has been up to recently`,
-  // Create new blog posts by adding a new .mdx file to app/blog/posts
-  // All posts will be listed on the /blog route
+  title: "Notes on AI and engineering",
+  description: `Writing by ${person.name}`,
 };
 
 const work: Work = {
   path: "/work",
   label: "Work",
-  title: `Projects – ${person.name}`,
-  description: `Design and dev projects by ${person.name}`,
-  // Create new project pages by adding a new .mdx file to app/blog/posts
-  // All projects will be listed on the /home and /work routes
+  title: `Projects — ${person.name}`,
+  description: `AI and engineering projects by ${person.name}`,
 };
 
 const gallery: Gallery = {
   path: "/gallery",
   label: "Gallery",
-  title: `Photo gallery – ${person.name}`,
-  description: `A photo collection by ${person.name}`,
-  // Images by https://lorant.one
-  // These are placeholder images, replace with your own
-  images: [
-    {
-      src: "/images/gallery/horizontal-1.jpg",
-      alt: "image",
-      orientation: "horizontal",
-    },
-    {
-      src: "/images/gallery/vertical-4.jpg",
-      alt: "image",
-      orientation: "vertical",
-    },
-    {
-      src: "/images/gallery/horizontal-3.jpg",
-      alt: "image",
-      orientation: "horizontal",
-    },
-    {
-      src: "/images/gallery/vertical-1.jpg",
-      alt: "image",
-      orientation: "vertical",
-    },
-    {
-      src: "/images/gallery/vertical-2.jpg",
-      alt: "image",
-      orientation: "vertical",
-    },
-    {
-      src: "/images/gallery/horizontal-2.jpg",
-      alt: "image",
-      orientation: "horizontal",
-    },
-    {
-      src: "/images/gallery/horizontal-4.jpg",
-      alt: "image",
-      orientation: "horizontal",
-    },
-    {
-      src: "/images/gallery/vertical-3.jpg",
-      alt: "image",
-      orientation: "vertical",
-    },
-  ],
+  title: `Gallery — ${person.name}`,
+  description: `A visual collection by ${person.name}`,
+  images: [],
 };
 
-export { person, social, newsletter, home, about, blog, work, gallery };
+const publications = [
+  {
+    title:
+      "Breast Cancer Detection and Comparative Analysis of Convolutional Neural Networks and VGG-16",
+    venue: "IEEE CONIT 2023",
+    date: "June 2023",
+    description:
+      "Evaluated CNN and VGG-16 architectures against classical ML models on the UCI Breast Cancer dataset. VGG-16 achieved a peak 98.24% accuracy and 0.98 F1-score, outperforming SVM (97.07%) and Gradient Boosting (95.32%).",
+    href: "https://ieeexplore.ieee.org/document/10205580",
+  },
+  {
+    title: "Hand Gesture Recognition using TensorFlow and Machine Learning",
+    venue: "International Journal of Advances in Engineering and Management (IJAEM)",
+    date: "November 2022",
+    description:
+      "Optimised a real-time ASL video understanding pipeline using OpenCV and TensorFlow/Keras LSTMs for gesture-sequence classification. Applied Gaussian filtering during preprocessing to reduce noise, then used quantisation and TensorFlow Lite for efficient inference on live video.",
+    href: "https://ijaem.net/issue_dcp/Hand%20gesture%20recognition%20using%20TensorFlow%20and%20Machine%20Learning.pdf",
+  },
+];
+
+const projects = [
+  {
+    name: "Grounded Local RAG and AgentOps Platform",
+    description:
+      "Local-first RAG platform for private knowledge retrieval — modular pipeline for document ingestion, chunking, indexing, hybrid search, reranking, and grounded generation with citation-backed answers and built-in evaluation support.",
+    tags: ["Python", "FastAPI", "RAG", "Hybrid Search", "Local LLMs", "MCP"],
+    href: "/work/grounded-local-rag-agentops-platform",
+  },
+  {
+    name: "CREME — Not Every Layer Counts",
+    description:
+      "Layer-aware robustness enhancement pipeline for code LLMs combining causal tracing, model editing, and proactive LoRA fine-tuning with a representation-alignment regulariser. Evaluated on MBPP and HumanEval across 18 prompt perturbation types.",
+    tags: ["Python", "PyTorch", "HuggingFace", "PEFT/LoRA", "Model Editing", "Causal Tracing"],
+    href: "https://github.com/AyushGupta-Code/CREME-Not-Every-Layer-Counts",
+  },
+  {
+    name: "Multimodal Soccer Video Intelligence Platform",
+    description:
+      "Transforms raw match video into structured event and tactical-sequence JSON using visual perception, temporal event extraction, and semantic abstraction. Enables grounded natural-language querying over player behaviour and match incidents via a FastAPI interface.",
+    tags: ["Python", "FastAPI", "Computer Vision", "Object Detection", "Grounded QA"],
+    href: "https://github.com/AyushGupta-Code/Multimodal-Sports-Intelligence-Copilot",
+  },
+  {
+    name: "MusicGen (AI Audiobook Engine)",
+    description:
+      "AI audiobook generation pipeline that converts text into emotionally aligned narrated audio with adaptive background music. Uses LangGraph to orchestrate RoBERTa-based emotion detection, local TTS, MusicGen, and pydub/FFmpeg post-processing with audio ducking.",
+    tags: ["Python", "LangGraph", "RoBERTa", "MusicGen", "TTS", "FFmpeg"],
+    href: "https://github.com/AyushGupta-Code/orchestrai-audio",
+  },
+  {
+    name: "LLM-Aided Customer Support Automation",
+    description:
+      "Classifies customer tweets by intent and severity then drafts empathetic replies with Gemini. TF-IDF + Logistic Regression baseline with optional LSTM and DistilBERT tiers.",
+    tags: ["Python", "Gemini", "NLP", "DistilBERT", "Classification"],
+    href: "https://github.com/AyushGupta-Code/LLM-Aided-Customer-Support-Automation",
+  },
+  {
+    name: "Real-Time ASL Gesture Recognition",
+    description:
+      "Real-time ASL video understanding pipeline using OpenCV and TensorFlow/Keras LSTMs for gesture-sequence classification. Applied quantisation and TensorFlow Lite for fast, efficient inference on live video — published as a conference paper (April 2023).",
+    tags: ["Python", "OpenCV", "TensorFlow", "LSTM", "TensorFlow Lite", "Edge ML"],
+    href: "https://github.com/AyushGupta-Code/Sign-Language-To-Text-Conversion",
+  },
+];
+
+export { person, social, newsletter, home, about, blog, work, gallery, publications, projects };

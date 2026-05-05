@@ -13,15 +13,14 @@ import {
 } from "@/types";
 import { home } from "./index";
 
-// IMPORTANT: Replace with your own domain address - it's used for SEO in meta tags and schema
-const baseURL: string = "https://demo.magic-portfolio.com";
+const baseURL: string = "https://magic-portfolio-tau.vercel.app";
 
 const routes: RoutesConfig = {
   "/": true,
   "/about": true,
   "/work": true,
-  "/blog": true,
-  "/gallery": true,
+  "/blog": false,
+  "/gallery": false,
 };
 
 const display: DisplayConfig = {
@@ -30,32 +29,35 @@ const display: DisplayConfig = {
   themeSwitcher: true,
 };
 
-// Enable password protection on selected routes
-// Set password in the .env file, refer to .env.example
-const protectedRoutes: ProtectedRoutesConfig = {
-  "/work/automate-design-handovers-with-a-figma-to-code-pipeline": true,
-};
+const protectedRoutes: ProtectedRoutesConfig = {};
 
-// Import and set font for each variant
-import { Geist } from "next/font/google";
+// Parisian Studio typography — refined serifs with italic expressiveness
+import { Cormorant_Garamond } from "next/font/google";
+import { Lora } from "next/font/google";
+import { DM_Sans } from "next/font/google";
 import { Geist_Mono } from "next/font/google";
 
-const heading = Geist({
+const heading = Cormorant_Garamond({
   variable: "--font-heading",
   subsets: ["latin"],
   display: "swap",
+  weight: ["300", "400", "600", "700"],
+  style: ["normal", "italic"],
 });
 
-const body = Geist({
+const body = Lora({
   variable: "--font-body",
   subsets: ["latin"],
   display: "swap",
+  weight: ["400", "500"],
+  style: ["normal", "italic"],
 });
 
-const label = Geist({
+const label = DM_Sans({
   variable: "--font-label",
   subsets: ["latin"],
   display: "swap",
+  weight: ["400", "500"],
 });
 
 const code = Geist_Mono({
@@ -71,24 +73,24 @@ const fonts: FontsConfig = {
   code: code,
 };
 
-// default customization applied to the HTML in the main layout.tsx
+// Parisian Studio palette — warm parchment + custom ochre brand + terracotta accent
 const style: StyleConfig = {
-  theme: "system", // dark | light | system
-  neutral: "gray", // sand | gray | slate | mint | rose | dusk | custom
-  brand: "cyan", // blue | indigo | violet | magenta | pink | red | orange | yellow | moss | green | emerald | aqua | cyan | custom
-  accent: "red", // blue | indigo | violet | magenta | pink | red | orange | yellow | moss | green | emerald | aqua | cyan | custom
-  solid: "contrast", // color | contrast
-  solidStyle: "flat", // flat | plastic
-  border: "playful", // rounded | playful | conservative | sharp
-  surface: "translucent", // filled | translucent
-  transition: "all", // all | micro | macro
-  scaling: "100", // 90 | 95 | 100 | 105 | 110
+  theme: "light",
+  neutral: "sand",
+  brand: "orange",   // overridden by --scheme-brand-* in custom.css (ochre gold)
+  accent: "red",     // overridden by --scheme-accent-* in custom.css (terracotta)
+  solid: "color",
+  solidStyle: "flat",
+  border: "conservative",
+  surface: "translucent",
+  transition: "all",
+  scaling: "100",
 };
 
 const dataStyle: DataStyleConfig = {
-  variant: "gradient", // flat | gradient | outline
-  mode: "categorical", // categorical | divergent | sequential
-  height: 24, // default chart height
+  variant: "gradient",
+  mode: "categorical",
+  height: 24,
   axis: {
     stroke: "var(--neutral-alpha-weak)",
   },
@@ -107,19 +109,19 @@ const effects: EffectsConfig = {
     radius: 100,
   },
   gradient: {
-    display: false,
-    opacity: 100,
+    display: true,
+    opacity: 60,
     x: 50,
-    y: 60,
-    width: 100,
-    height: 50,
+    y: 0,
+    width: 80,
+    height: 40,
     tilt: 0,
-    colorStart: "accent-background-strong",
+    colorStart: "brand-background-strong",
     colorEnd: "page-background",
   },
   dots: {
-    display: true,
-    opacity: 40,
+    display: false,
+    opacity: 20,
     size: "2",
     color: "brand-background-strong",
   },
@@ -161,7 +163,7 @@ const mailchimp: MailchimpConfig = {
       colorEnd: "static-transparent",
     },
     dots: {
-      display: true,
+      display: false,
       opacity: 20,
       size: "2",
       color: "brand-on-background-weak",
@@ -184,27 +186,24 @@ const mailchimp: MailchimpConfig = {
   },
 };
 
-// default schema data
 const schema: SchemaConfig = {
   logo: "",
-  type: "Organization",
-  name: "Once UI",
+  type: "Person",
+  name: "Ayush Gupta",
   description: home.description,
-  email: "lorant@once-ui.com",
+  email: "ayushgupta20011@gmail.com",
 };
 
-// social links
 const sameAs: SameAsConfig = {
-  threads: "https://www.threads.com/@once_ui",
-  linkedin: "https://www.linkedin.com/company/once-ui/",
-  discord: "https://discord.com/invite/5EyAQ4eNdS",
+  threads: "",
+  linkedin: "https://www.linkedin.com/in/ayush-gupta-50007b1b6/",
+  discord: "",
 };
 
-// social sharing configuration for blog posts
 const socialSharing: SocialSharingConfig = {
   display: true,
   platforms: {
-    x: true,
+    x: false,
     linkedin: true,
     facebook: false,
     pinterest: false,

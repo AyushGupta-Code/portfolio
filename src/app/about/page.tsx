@@ -12,8 +12,9 @@ import {
   Schema,
   Row,
 } from "@once-ui-system/core";
-import { baseURL, about, person, social } from "@/resources";
+import { baseURL, about, person, social, publications, projects } from "@/resources";
 import TableOfContents from "@/components/about/TableOfContents";
+import { ProjectsGrid } from "@/components";
 import styles from "@/components/about/about.module.scss";
 import React from "react";
 
@@ -48,6 +49,16 @@ export default function About() {
       title: about.technical.title,
       display: about.technical.display,
       items: about.technical.skills.map((skill) => skill.title),
+    },
+    {
+      title: "Publications",
+      display: true,
+      items: [],
+    },
+    {
+      title: "Projects",
+      display: true,
+      items: [],
     },
   ];
   return (
@@ -196,6 +207,18 @@ export default function About() {
             )}
           </Column>
 
+          <Row className={styles.blockAlign} paddingBottom="m" fitWidth>
+            <Button
+              href="https://drive.google.com/file/d/1OXsa--K9z2AHbeyRee3rEbChcgH8H1kc/view?usp=sharing"
+              variant="primary"
+              size="s"
+              prefixIcon="document"
+              data-border="rounded"
+            >
+              View Résumé
+            </Button>
+          </Row>
+
           {about.intro.display && (
             <Column textVariant="body-default-l" fillWidth gap="m" marginBottom="xl">
               {about.intro.description}
@@ -335,6 +358,50 @@ export default function About() {
               </Column>
             </>
           )}
+          <Heading
+            as="h2"
+            id="Publications"
+            variant="display-strong-s"
+            marginBottom="m"
+            marginTop="l"
+          >
+            Publications
+          </Heading>
+          <Column fillWidth gap="l" marginBottom="40">
+            {publications.map((pub, index) => (
+              <Column key={index} fillWidth gap="4">
+                <Row fillWidth horizontal="between" vertical="start" gap="16">
+                  <Text variant="heading-strong-l">{pub.title}</Text>
+                  <Button
+                    href={pub.href}
+                    variant="secondary"
+                    size="s"
+                    suffixIcon="arrowUpRightFromSquare"
+                    style={{ flexShrink: 0 }}
+                  >
+                    View
+                  </Button>
+                </Row>
+                <Text variant="body-default-s" onBackground="brand-weak">
+                  {pub.venue} · {pub.date}
+                </Text>
+                <Text variant="body-default-m" onBackground="neutral-weak" marginTop="4">
+                  {pub.description}
+                </Text>
+              </Column>
+            ))}
+          </Column>
+
+          <Heading
+            as="h2"
+            id="Projects"
+            variant="display-strong-s"
+            marginBottom="40"
+            marginTop="l"
+          >
+            Projects
+          </Heading>
+          <ProjectsGrid projects={projects} />
         </Column>
       </Row>
     </Column>
