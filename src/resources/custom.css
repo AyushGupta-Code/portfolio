@@ -139,8 +139,7 @@
 }
 
 .chat-input-row {
-  border-top: 1px solid var(--neutral-border-medium);
-  padding-top: 1rem;
+  padding-top: 0;
 }
 
 .chat-input {
