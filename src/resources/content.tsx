@@ -52,7 +52,7 @@ const home: Home = {
   },
   subline: (
     <>
-      I'm Ayush, finishing my M.S. at NC State while working on retrieval systems, agentic
+      I'm Ayush — finishing my M.S. at NC State while working on retrieval systems, agentic
       workflows, and multimodal AI. Ask me anything below.
     </>
   ),
@@ -79,10 +79,12 @@ const about: About = {
     title: "Introduction",
     description: (
       <>
-        I'm a CS grad student interested in the messy, interesting parts of AI: why models break,
-        how to make retrieval actually work, and what it takes to go from a research idea to
-        something deployed. My stack spans Python, PyTorch, and cloud infrastructure, with
-        hands-on work across LLMs, fine-tuning, and multimodal pipelines.
+        I'm an AI Engineer based in Raleigh, NC, finishing my M.S. in Computer Science at NC State
+        (May 2026). Before grad school I spent a year at Innoventix Solutions building retrieval
+        pipelines and multimodal generation systems in production — the kind of work where "it
+        works in the notebook" is nowhere near the finish line. These days I'm most interested in
+        making language models reliable: grounded retrieval, robust generation, and the plumbing
+        that connects them. I like problems that are messy in the interesting ways.
       </>
     ),
   },
